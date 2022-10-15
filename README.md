@@ -2,6 +2,10 @@
 
 Command Line Calculator using Node.js, TypeScript, and Inquirer.
 
+## Preview
+
+<img src="./preview.gif" />
+
 ## Setup
 
 ```bash

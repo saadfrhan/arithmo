@@ -1,4 +1,4 @@
-import { AnswersI } from './'
+import AnswersI from './ts/interfaces';
 
 export const performCalculation = ({ first_num, operation, second_num }: AnswersI) => {
   let result = 0;

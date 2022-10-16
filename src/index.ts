@@ -1,12 +1,9 @@
 import inquirer from 'inquirer';
-import { performCalculation } from './calc_func';
 import { questions } from './questions';
 
-export interface AnswersI {
-  first_num: number;
-  operation: string;
-  second_num: number;
-}
+import AnswersI from './ts/interfaces';
+
+import { performCalculation } from './calc_func';
 
 inquirer.prompt(questions).then((answers: AnswersI) => {
   performCalculation({

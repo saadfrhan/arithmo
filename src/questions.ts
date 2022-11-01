@@ -1,10 +1,6 @@
+import { validateVal } from "./utils";
+
 export const questions = [
-  {
-    type: 'input',
-    name: 'first_num',
-    message: 'Enter a first number:',
-    validate: validateVal()
-  },
   {
     type: 'list',
     name: 'operation',
@@ -13,22 +9,27 @@ export const questions = [
       "Add",
       "Subtract",
       "Multiply",
-      "Divide"
+      "Divide",
+      "Exponentiation",
+      "Modulus"
     ],
-    filter: (val: string) => val.toLowerCase(),
+    filter: (val: string) => val.toUpperCase(),
+    validate: validateVal()
+  },
+  {
+    type: 'input',
+    name: 'first_num',
+    message: 'Enter a first number:',
+    filter: (val: string) => Number(val),
     validate: validateVal()
   },
   {
     type: 'input',
     name: 'second_num',
     message: 'Enter a second number:',
+    filter: (val: string) => Number(val),
     validate: validateVal(),
   },
 ]
 
-function validateVal() {
-  return (val: string) => {
-    const isValid = Boolean(val);
-    return isValid || 'Please enter a number';
-  };
-}
+

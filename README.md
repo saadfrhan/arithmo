@@ -2,7 +2,7 @@
 
 Command Line Calculator using Node.js, TypeScript, and Inquirer.
 
-## Preview
+## Preview (Outdated)
 
 <img src="./preview.gif" />
 

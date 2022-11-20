@@ -1,7 +1,13 @@
 {
-  "name": "calculator",
+  "name": "calc-cli",
   "version": "0.0.1",
   "description": "Command Line Calculator using Node.js, TypeScript, and Inquirer",
+  "homepage": "https://github.com/SaadFarhanIdress/node-inquirer-calculator-cli",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SaadFarhanIdress/node-inquirer-calculator-cli"
+  },
   "main": "src/index",
   "scripts": {
     "start": "ts-node src/index"

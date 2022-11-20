@@ -1,11 +1,12 @@
 {
-  "name": "typescript-calculator-cli",
-  "version": "1.0.0",
+  "name": "calculator",
+  "version": "0.0.1",
   "description": "Command Line Calculator using Node.js, TypeScript, and Inquirer",
   "main": "src/index",
   "scripts": {
     "start": "ts-node src/index"
   },
+  "bin": "./src/index.ts",
   "dependencies": {
     "inquirer": "^8.2.4",
     "ts-node": "^10.9.1"

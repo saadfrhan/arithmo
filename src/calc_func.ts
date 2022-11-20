@@ -2,7 +2,11 @@ import promptQuestions from '../';
 import AnswersI from './ts/interfaces';
 import { presentAnswer } from './utils';
 
-export const performCalculation = ({ first_num, operation, second_num }: AnswersI) => {
+export const performCalculation = ({
+  first_num,
+  operation,
+  second_num
+}: AnswersI) => {
   let result = 0;
   switch (operation) {
     case 'ADD':

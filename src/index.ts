@@ -3,7 +3,7 @@
 import inquirer from 'inquirer';
 import { questions } from './questions';
 
-import AnswersI from './ts/interfaces';
+import AnswersI from './ts';
 
 import { performCalculation } from './calc_func';
 

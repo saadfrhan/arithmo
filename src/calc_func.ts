@@ -1,5 +1,5 @@
 import promptQuestions from '../';
-import AnswersI from './ts/interfaces';
+import AnswersI from './ts';
 import { presentAnswer } from './utils';
 
 export const performCalculation = ({

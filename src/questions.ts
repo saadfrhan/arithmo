@@ -1,4 +1,4 @@
-import { validateVal } from "./utils";
+import { validateVal } from "./utils/index.js";
 
 export const questions = [
   {
@@ -6,14 +6,14 @@ export const questions = [
     name: 'operation',
     message: 'Choose an operation:',
     choices: [
-      "Add",
-      "Subtract",
-      "Multiply",
-      "Divide",
-      "Exponentiation",
-      "Modulus"
+      "+ Add",
+      "- Subtract",
+      "× Multiply",
+      "÷ Divide",
+      "^ Exponentiation",
+      "% Modulus",
     ],
-    filter: (val: string) => val.toUpperCase(),
+    filter: (val: string) => val.toUpperCase().split(' ')[1],
     validate: validateVal()
   },
   {

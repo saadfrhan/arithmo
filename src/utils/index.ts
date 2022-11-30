@@ -10,7 +10,7 @@ export function validateVal() {
 }
 
 export function presentAnswer(result: number) {
-  console.log(`${chalk.bgBlue('Answer')}: ${chalk.blue(result)}`);
+  console.log(`${chalk.bgBlue('Answer')}: ${result}`);
 }
 
 export const sleep = (ms: number = 2000) => new Promise(resolve => setTimeout(resolve, ms));

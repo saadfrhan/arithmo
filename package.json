@@ -1,6 +1,6 @@
 {
-  "name": "@_saad/calculator",
-  "version": "0.0.5",
+  "name": "intcalc",
+  "version": "0.0.3",
   "description": "Command Line Calculator using Node.js, TypeScript, and Inquirer",
   "homepage": "https://github.com/SaadFarhanIdress/node-inquirer-calculator-cli",
   "type": "module",
@@ -10,15 +10,14 @@
   },
   "main": "src/index",
   "scripts": {
-    "start": "ts-node src/index",
+    "start": "tsc && node dist/index",
     "build": "tsc"
   },
   "bin": "./dist/index.js",
   "dependencies": {
     "chalk": "^5.1.2",
     "chalk-animation": "^2.0.3",
-    "inquirer": "^8.2.4",
-    "ts-node": "^10.9.1"
+    "inquirer": "^8.2.4"
   },
   "devDependencies": {
     "@types/chalk-animation": "^1.6.1",

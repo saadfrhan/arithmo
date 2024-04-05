@@ -19,7 +19,8 @@
     "clear-metadata": "node ./scripts/clear.js"
   },
   "bin": {
-    "arithmo": "dist/index.js"
+    "arithmo": "dist/index.js",
+    "devarithmo": "dist/index.js"
   },
   "dependencies": {
     "commander": "^12.0.0"

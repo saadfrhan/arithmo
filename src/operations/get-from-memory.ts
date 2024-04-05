@@ -1,4 +1,4 @@
-import { readMemoryFromFile } from "src/utils/file";
+import { readMemoryFromFile } from "../utils/file.js";
 
 export default function getFromMemory(expression: string[]) {
   const memoryValue = readMemoryFromFile();

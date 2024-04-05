@@ -41,7 +41,7 @@ The calculator supports the following operations:
 
 - Addition: `+`
 - Subtraction: `-`
-- Multiplication: `*`
+- Multiplication: `x`
 - Division: `/`
 - Exponentiation: `^`
 - Square root: `sqrt`

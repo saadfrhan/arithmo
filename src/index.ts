@@ -74,6 +74,11 @@ program
       tan(expression);
     }
 
+    if (expression.includes("x")) {
+      const index = expression.indexOf("x");
+      expression[index] = "*";
+    }
+
     if (expression.includes("sqrt")) {
       sqrt(expression);
     }

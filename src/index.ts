@@ -1,33 +1,110 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
-import chalkAnimation from 'chalk-animation';
-import { sleep } from './utils/index.js';
+import { Command } from "commander";
+import fs from "fs";
+import { readMemoryFromFile, writeMemoryToFile } from "./utils/file.js";
+import { sqrt } from "./operations/squareRoot.js";
+import { cos, sin, tan } from "./operations/trigonometry.js";
+import { carret } from "./operations/carret.js";
+import getFromMemory from "./operations/get-from-memory.js";
+import writeResultToFile from "./operations/write-result-to-file.js";
 
-import inquirer from 'inquirer';
-import { questions } from './questions.js';
+const program = new Command();
 
-import AnswersI from './ts';
-import { performCalculation } from './calc_func.js';
+program.version("1.0.0").description("A CLI calculator");
 
-async function welcome() {
-  const rainbowTitle = chalkAnimation.rainbow('Welcome to the CLI Calculator!');
-  await sleep();
-  console.log(`
-    ${chalk.bgBlue('Instructions ')}
-    ${chalk.blue('1.')} Choose an operation.
-    ${chalk.blue('2.')} Enter a first number.
-    ${chalk.blue('3.')} Enter a second number.
-    ${chalk.blue('4.')} Press enter to see the answer.  
-  `)
-  rainbowTitle.stop();
-  await sleep(1000);
+// Define the store command
+program
+  .command("store")
+  .argument("<value>")
+  .description("Store a value in memory")
+  .action((value) => {
+    writeMemoryToFile(parseFloat(value));
+  });
+
+// Define the recall command
+program
+  .command("recall")
+  .description("Recall the value stored in memory")
+  .action(() => {
+    const memoryValue = readMemoryFromFile();
+    console.log(
+      memoryValue !== null
+        ? `Value in memory: ${memoryValue}`
+        : "Memory is empty."
+    );
+  });
+
+// Define the clear command
+program
+  .command("clear")
+  .description("Clear the value stored in memory")
+  .action(() => {
+    writeMemoryToFile(0);
+  });
+
+program
+  .argument("[<expression>...]", "Arithmetic expression to evaluate")
+  .option(
+    "-p, --precision <number>",
+    "Specify the number of decimal places to round the result to",
+    parseInt
+  )
+  .option("-f, --file <path>", "Read expression from file")
+  .option("-o, --output <path>", "Output result to file")
+  .description("Arithmetic expression to evaluate")
+  .action((expression: string[], options) => {
+    if (options.file) {
+      writeResultToFile(expression, options.file);
+    }
+
+    if (expression.includes("mem")) {
+      getFromMemory(expression);
+    }
+
+    if (expression.includes("sin")) {
+      sin(expression);
+    }
+
+    if (expression.includes("cos")) {
+      cos(expression);
+    }
+
+    if (expression.includes("tan")) {
+      tan(expression);
+    }
+
+    if (expression.includes("sqrt")) {
+      sqrt(expression);
+    }
+
+    const item = expression.find((item) =>
+      item.includes("^")
+    ) as `${string}^${string}`;
+    if (item) {
+      carret(expression, item);
+    }
+
+    const result = eval(expression.join(""));
+    const precision =
+      options.precision !== undefined
+        ? options.precision
+        : result % 1 === 0
+        ? 0
+        : 2;
+    const roundedResult = result.toFixed(precision);
+
+    if (options.output) {
+      fs.writeFileSync(options.output, roundedResult);
+      console.log(`Result written to file: ${options.output}`);
+      return;
+    }
+
+    console.log(`Result: ${roundedResult}`);
+  });
+
+if (process.argv.length < 3) {
+  program.help();
 }
 
-export default async function promptQuestions() {
-  const answers = await inquirer.prompt(questions);
-  return performCalculation(answers as AnswersI);
-}
-
-await welcome();
-await promptQuestions();
+program.parse(process.argv);

@@ -1,28 +1,34 @@
 {
   "name": "intcalc",
-  "version": "0.0.3",
-  "description": "Command Line Calculator using Node.js, TypeScript, and Inquirer",
-  "homepage": "https://github.com/SaadFarhanIdress/node-inquirer-calculator-cli",
+  "version": "0.0.0",
+  "description": "Command Line Calculator using Node.js, TypeScript, and Commander.js",
+  "homepage": "https://github.com/saadfrhan/intcalc",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SaadFarhanIdress/node-inquirer-calculator-cli"
+    "url": "https://github.com/saadfrhan/intcalc"
   },
   "main": "src/index",
   "scripts": {
-    "start": "tsc && node dist/index",
-    "build": "tsc"
+    "start": "pnpm build && node dist/index.js",
+    "link-cli": "pnpm --global unlink intcalc && pnpm --global link",
+    "build": "tsup src/index.ts --format esm --dts",
+    "lint": "tsc",
+    "release": "pnpm run build && changeset publish",
+    "changeset": "changeset",
+    "clear-metadata": "node ./scripts/clear.js"
   },
-  "bin": "./dist/index.js",
+  "bin": {
+    "intcalc": "dist/index.js"
+  },
   "dependencies": {
-    "chalk": "^5.1.2",
-    "chalk-animation": "^2.0.3",
-    "inquirer": "^8.2.4"
+    "commander": "^12.0.0"
   },
   "devDependencies": {
-    "@types/chalk-animation": "^1.6.1",
-    "@types/inquirer": "^9.0.2",
-    "@types/node": "^18.11.0",
-    "typescript": "^4.8.4"
+    "@types/node": "^20.12.4",
+    "typescript": "^5.4.4",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.1",
+    "tsup": "^8.0.2"
   }
 }

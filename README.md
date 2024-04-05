@@ -7,7 +7,7 @@ A simple command-line calculator application that supports basic arithmetic oper
 To run the calculator, simply execute the following command in the terminal:
 
 ```bash
-pnpm dlx calcify
+pnpm dlx arithmo
 ```
 
 ## 🚀 Usage
@@ -60,7 +60,7 @@ The calculator supports the following operations:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/saadfrhan/calcify
+git clone https://github.com/saadfrhan/arithmo
 ```
 
 1. Install the dependencies:
@@ -78,7 +78,7 @@ pnpm link-cli
 1. Run the calculator:
 
 ```bash
-calcify
+arithmo
 ```
 
 ## 🤝 Contributing

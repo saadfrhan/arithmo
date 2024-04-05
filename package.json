@@ -1,6 +1,6 @@
 {
   "name": "arithmo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Command Line Calculator using Node.js, TypeScript, and Commander.js",
   "homepage": "https://github.com/saadfrhan/arithmo",
   "type": "module",

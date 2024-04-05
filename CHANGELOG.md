@@ -1,5 +1,11 @@
 # arithmo
 
+## 0.1.1
+
+### Patch Changes
+
+- [`a6dbab5`](https://github.com/saadfrhan/arithmo/commit/a6dbab500c1afbebdf5933cfca2a6b45090dc079) Thanks [@saadfrhan](https://github.com/saadfrhan)! - - Solve multiply issue, now only `x` is supported. [#8](https://github.com/saadfrhan/arithmo/issues/8)
+
 ## 0.1.0
 
 ### Minor Changes

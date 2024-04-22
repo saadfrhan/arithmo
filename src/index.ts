@@ -43,6 +43,29 @@ program
     writeMemoryToFile(0);
   });
 
+// Define the history command
+program
+  .command("history")
+  .option("-c, --clear", "Clear the history")
+  .description("Show the history of expressions evaluated")
+  .action((options) => {
+    if (options.clear) {
+      try {
+        fs.writeFileSync("history.txt", "");
+        console.log("History cleared.");
+      } catch (error) {
+        console.error("Error clearing history:", error);
+      }
+      return;
+    }
+    try {
+      const history = fs.readFileSync("history.txt", "utf8");
+      console.log(history);
+    } catch (error) {
+      console.error("Error reading history:", error);
+    }
+  });
+
 program
   .argument("[<expression>...]", "Arithmetic expression to evaluate")
   .option(
@@ -106,6 +129,27 @@ program
     }
 
     console.log(`Result: ${roundedResult}`);
+
+    // write to histroy
+
+    // Read history file, if exists
+    let history = "";
+    try {
+      history = fs.readFileSync("history.txt", "utf8");
+    } catch (err) {
+      if (err.code !== "ENOENT") {
+        // Log the error if it's not "File not found"
+        console.error("Error reading history file:", err);
+      }
+    }
+
+    // Append current expression and result to history
+    const expressionString = expression.join(" ");
+    const resultString = `${expressionString} = ${roundedResult}`;
+    history += `${history ? "\n" : ""}${resultString}`;
+
+    // Write updated history back to file
+    fs.writeFileSync("history.txt", history);
   });
 
 if (process.argv.length < 3) {
